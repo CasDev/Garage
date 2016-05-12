@@ -23,7 +23,7 @@ namespace Garage.Models
         public VehicleBrand VehicleBrand { get; set; }
         public string Color { get; set; }
         public DateTime ParkingTime { get; set; }
-        public DateTime CheckoutTime { get; set; }
+        public DateTime? CheckoutTime { get; set; }
         public double Price { get; set; }
         public bool IsParked { get; set; }
     }
