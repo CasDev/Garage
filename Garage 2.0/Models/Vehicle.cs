@@ -24,7 +24,7 @@ namespace Garage.Models
         public string Color { get; set; }
         public DateTime ParkingTime { get; set; }
         public DateTime? CheckoutTime { get; set; }
-        public double Price { get; set; }
+        public double TotalPrice { get; set; }
         public double? PricePerHour { get; set; }
         public bool IsParked { get; set; }        
     }
