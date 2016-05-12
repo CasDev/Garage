@@ -47,10 +47,17 @@ namespace Garage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Park([Bind(Include = "Id,Registration,VehicleType,VehicleBrand,Color,ParkingTime,CheckoutTime,Price,PricePerHour,IsParked")] Vehicle vehicle)
+        public ActionResult Park([Bind(Include = "Registration,VehicleType,VehicleBrand,Color")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
+                vehicle.IsParked = true;
+                vehicle.ParkingTime = DateTime.Now;
+                vehicle.Price = 60; // TODO: add from config
+                vehicle.PricePerHour = 60; // TODO: also from config
+                vehicle.Color = vehicle.Color.ToUpper();
+                vehicle.Registration = vehicle.Registration.ToUpper();
+
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
