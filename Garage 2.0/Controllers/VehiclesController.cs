@@ -36,8 +36,8 @@ namespace Garage.Controllers
             return View(vehicle);
         }
 
-        // GET: Vehicles/Create
-        public ActionResult ParkVehicle()
+        // GET: Vehicles/Park
+        public ActionResult Park()
         {
             return View();
         }
@@ -47,7 +47,7 @@ namespace Garage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ParkVehicle([Bind(Include = "Id,Registration,VehicleType,VehicleBrand,Color,ParkingTime,CheckoutTime,Price,PricePerHour,IsParked")] Vehicle vehicle)
+        public ActionResult Park([Bind(Include = "Id,Registration,VehicleType,VehicleBrand,Color,ParkingTime,CheckoutTime,Price,PricePerHour,IsParked")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -90,8 +90,8 @@ namespace Garage.Controllers
             return View(vehicle);
         }
 
-        // GET: Vehicles/Delete/5
-        public ActionResult CheckOutVehicle(int? id)
+        // GET: Vehicles/CheckOut/5
+        public ActionResult CheckOut(int? id)
         {
             if (id == null)
             {
@@ -105,8 +105,8 @@ namespace Garage.Controllers
             return View(vehicle);
         }
 
-        // POST: Vehicles/Delete/5
-        [HttpPost, ActionName("CheckOutVehicle")]
+        // POST: Vehicles/CheckOut/5
+        [HttpPost, ActionName("CheckOut")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
