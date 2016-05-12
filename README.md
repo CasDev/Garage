@@ -17,21 +17,24 @@
 * CheckOutTime (DateTime)
 * Price (double)
 * PricePerHour (double)
-* IsParked (bool)
+* IsParked (bool) // IsParked { get { return (this.CheckOutTime != null) } } might be a future idea
 
 ## The controller
 
 ### Design
 
 * Index
+* List of all vehicles
+  * Filter by Vehicle.IsParked to find current, and historical, parkings
 * ParkVehicle
   * Vehicle.ParkingTime is set to DateTime.Now
+  * Vehicle.Price is set to current price
 * CheckOutVehicle
   * Vehicle.CheckOutTime is set to DateTime.Now and Vehicle.IsParked=false
-  * Produce a receipt, calculate price, set IsParked to false
-* List of all vehicles
+  * Produce a receipt
+  * calculate price ( Vehicle.PricePerHour = Vehicle.Price, Vehicle.Price = ( Vehicle.Price * amountOfHours ) )
+  * set IsParked to false
 * Filtering
-  * IsParked = true or false
   * Search by Registration number  
   * Sort by all table attributes except Id
 
