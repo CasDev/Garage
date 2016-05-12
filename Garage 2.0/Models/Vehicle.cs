@@ -25,6 +25,7 @@ namespace Garage.Models
         public DateTime ParkingTime { get; set; }
         public DateTime? CheckoutTime { get; set; }
         public double Price { get; set; }
-        public bool IsParked { get; set; }
+        public double? PricePerHour { get; set; }
+        public bool IsParked { get; set; }        
     }
 }

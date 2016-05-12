@@ -157,6 +157,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="DataAccess\Database.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -164,6 +165,10 @@
     <Compile Include="Migrations\201605120942350_Init.cs" />
     <Compile Include="Migrations\201605120942350_Init.Designer.cs">
       <DependentUpon>201605120942350_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121150543_First.cs" />
+    <Compile Include="Migrations\201605121150543_First.Designer.cs">
+      <DependentUpon>201605121150543_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Vehicle.cs" />
@@ -209,6 +214,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Vehicles\Create.cshtml" />
+    <Content Include="Views\Vehicles\Delete.cshtml" />
+    <Content Include="Views\Vehicles\Details.cshtml" />
+    <Content Include="Views\Vehicles\Edit.cshtml" />
+    <Content Include="Views\Vehicles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -224,6 +234,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605120942350_Init.resx">
       <DependentUpon>201605120942350_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121150543_First.resx">
+      <DependentUpon>201605121150543_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
