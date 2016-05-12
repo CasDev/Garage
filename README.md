@@ -34,4 +34,12 @@
   * IsParked = true or false
   * Search by Registration number  
   * Sort by all table attributes except Id
+
+  ## The View
+
+  ### Default View Locations
+
+  * /Vehicles/ParkVehicle
+  * /Vehicles/CheckOutVehicle
+  * /Vehicles/ViewVehicles
  
