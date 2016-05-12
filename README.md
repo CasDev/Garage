@@ -16,4 +16,22 @@
 * ParkingTime (DateTime)
 * CheckOutTime (DateTime)
 * Price (double)
+* PricePerHour (double)
 * IsParked (bool)
+
+## The controller
+
+### Design
+
+* Index
+* ParkVehicle
+  * Vehicle.ParkingTime is set to DateTime.Now
+* CheckOutVehicle
+  * Vehicle.CheckOutTime is set to DateTime.Now and Vehicle.IsParked=false
+  * Produce a receipt, calculate price, set IsParked to false
+* List of all vehicles
+* Filtering
+  * IsParked = true or false
+  * Search by Registration number  
+  * Sort by all table attributes except Id
+ 
