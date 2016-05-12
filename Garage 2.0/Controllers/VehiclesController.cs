@@ -118,8 +118,12 @@ namespace Garage.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
-            db.Vehicles.Remove(vehicle);
+            vehicle.CheckoutTime = DateTime.Now;
+            vehicle.IsParked = false;
+            db.Entry(vehicle).State = EntityState.Modified;
             db.SaveChanges();
+            //db.Vehicles.Remove(vehicle);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
