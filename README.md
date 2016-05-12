@@ -26,10 +26,10 @@
 * Index
 * List of all vehicles
   * Filter by Vehicle.IsParked to find current, and historical, parkings
-* ParkVehicle
+* Park
   * Vehicle.ParkingTime is set to DateTime.Now
   * Vehicle.Price is set to current price
-* CheckOutVehicle
+* CheckOut
   * Vehicle.CheckOutTime is set to DateTime.Now and Vehicle.IsParked=false
   * Produce a receipt
   * calculate price ( Vehicle.PricePerHour = Vehicle.Price, Vehicle.Price = ( Vehicle.Price * amountOfHours ) )
