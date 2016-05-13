@@ -15,7 +15,7 @@
 * Color (string)
 * ParkingTime (DateTime)
 * CheckOutTime (DateTime)
-* Price (double)
+* TotalPrice (double)
 * PricePerHour (double)
 * IsParked (bool) // IsParked { get { return (this.CheckOutTime != null) } } might be a future idea
 
@@ -28,7 +28,8 @@
   * Filter by Vehicle.IsParked to find current, and historical, parkings
 * Park
   * Vehicle.ParkingTime is set to DateTime.Now
-  * Vehicle.Price is set to current price
+  * Vehicle.TotalPrice is set to current price, or 0 ( zero )
+  * Vehicle.PricePerHour is set to current price
 * CheckOut
   * Vehicle.CheckOutTime is set to DateTime.Now and Vehicle.IsParked=false
   * Produce a receipt
