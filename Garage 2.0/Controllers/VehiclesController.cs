@@ -144,7 +144,7 @@ namespace Garage.Controllers
         // POST: Vehicles/CheckOut/5
         [HttpPost, ActionName("CheckOut")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int? id, FormCollection Collection)
+        public ActionResult DeleteConfirmed(int id)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
             vehicle.CheckoutTime = DateTime.Now;
