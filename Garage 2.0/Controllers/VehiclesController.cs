@@ -16,8 +16,12 @@ namespace Garage.Controllers
         private DataAccess.Database db = new DataAccess.Database();
 
         // GET: Vehicles
-        public ActionResult Index()
+        public ActionResult Index(string Message)
         {
+            if (!string.IsNullOrEmpty(Message))
+            {
+                ViewBag.Message = HttpUtility.UrlDecode(Message);
+            }
             return View(db.Vehicles.Where(v => v.IsParked == true).ToList());
         }
 
@@ -26,12 +30,12 @@ namespace Garage.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
             }
             return View(vehicle);
         }
@@ -71,12 +75,12 @@ namespace Garage.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
             }
             return View(vehicle);
         }
@@ -102,12 +106,12 @@ namespace Garage.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
             }
             return View(vehicle);
         }

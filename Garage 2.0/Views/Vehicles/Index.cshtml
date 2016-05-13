@@ -9,6 +9,12 @@
 <p>
     @Html.ActionLink("Park Vehicle", "Park")
 </p>
+@if (ViewBag.Message != null)
+{
+    <p>
+        @ViewBag.Message
+    </p>
+}
 <table class="table">
     <tr>
         <th>
