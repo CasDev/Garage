@@ -107,7 +107,7 @@ namespace Garage.Controllers
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(vehicle);
         }
