@@ -34,13 +34,15 @@
   * Produce a receipt
   * calculate price ( Vehicle.PricePerHour = Vehicle.TotalPrice, Vehicle.TotalPrice = ( Vehicle.TotalPrice * amountOfHours ) )
   * set IsParked to false
+* CheckOut By Search
+  * search by Vehicle.Registration
 * Filtering
   * Search by Registration number  
   * Sort by all table attributes except Id
 
-  ## The View
+## The View
 
-  ### Default View Locations
+### Default View Locations
 
   * /Vehicles/ParkVehicle
   * /Vehicles/CheckOutVehicle
