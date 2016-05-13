@@ -101,10 +101,10 @@ namespace Garage.Controllers
                 {
                     return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
                 }
-                _vehicle.Registration = vehicle.Registration;
+                _vehicle.Registration = vehicle.Registration.ToUpper();
                 _vehicle.VehicleBrand = vehicle.VehicleBrand;
                 _vehicle.VehicleType = vehicle.VehicleType;
-                _vehicle.Color = vehicle.Color;
+                _vehicle.Color = vehicle.Color.ToUpper();
 
                 db.Entry(_vehicle).State = EntityState.Modified;
                 db.SaveChanges();
