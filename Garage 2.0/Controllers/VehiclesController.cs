@@ -170,7 +170,7 @@ namespace Garage.Controllers
             db.SaveChanges();
             //db.Vehicles.Remove(vehicle);
             //db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Receipt", new { id = vehicle.Id });
         }
 
         public ActionResult Receipt(int id)
