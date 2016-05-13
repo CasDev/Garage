@@ -36,7 +36,7 @@ namespace Garage.Controllers
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
-                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
             }
             return View(vehicle);
         }
@@ -82,7 +82,7 @@ namespace Garage.Controllers
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
-                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
             }
             return View(vehicle);
         }
@@ -99,7 +99,7 @@ namespace Garage.Controllers
                 Vehicle _vehicle = db.Vehicles.Find(vehicle.Id);
                 if (_vehicle == null)
                 {
-                    return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+                    return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
                 }
                 _vehicle.Registration = vehicle.Registration.ToUpper();
                 _vehicle.VehicleBrand = vehicle.VehicleBrand;
@@ -123,7 +123,7 @@ namespace Garage.Controllers
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
-                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
             }
             return View(vehicle);
         }
@@ -141,7 +141,7 @@ namespace Garage.Controllers
             string Search = Collection["Registration"];
             if (string.IsNullOrEmpty(Search) || string.IsNullOrWhiteSpace(Search))
             {
-                ViewBag.Wrong = "Please, add a registration number";
+                ViewBag.Wrong = "Please add a registration number";
                 return View("~/Views/Vehicles/CheckOut_alt.cshtml");
             }
 
@@ -161,7 +161,7 @@ namespace Garage.Controllers
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
-                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
             }
             vehicle.CheckoutTime = DateTime.Now;
             
@@ -178,7 +178,7 @@ namespace Garage.Controllers
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
-                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
             }
             TimeSpan duration = (DateTime.Now - vehicle.ParkingTime);
             double totalPrice = duration.TotalMinutes * vehicle.PricePerHour / 60.0;
