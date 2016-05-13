@@ -19,7 +19,7 @@ namespace Garage.Controllers
         [ValidateInput(false)]
         public ActionResult Index(string Message)
         {
-            if (!string.IsNullOrEmpty(Message))
+            if (!string.IsNullOrEmpty(Message) || !string.IsNullOrWhiteSpace(Message))
             {
                 ViewBag.Message = HttpUtility.UrlDecode(Message);
             }
@@ -58,6 +58,7 @@ namespace Garage.Controllers
             {
                 vehicle.IsParked = true;
                 vehicle.ParkingTime = DateTime.Now;
+                vehicle.CheckoutTime = DateTime.MinValue;
                 vehicle.TotalPrice = 60; // TODO: add from config
                 vehicle.PricePerHour = 60; // TODO: also from config
                 vehicle.Color = vehicle.Color.ToUpper();
@@ -148,6 +149,10 @@ namespace Garage.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
+            if (vehicle == null)
+            {
+                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+            }
             vehicle.CheckoutTime = DateTime.Now;
             
             vehicle.IsParked = false;
@@ -161,6 +166,10 @@ namespace Garage.Controllers
         public ActionResult Receipt(int id)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
+            if (vehicle == null)
+            {
+                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+            }
             TimeSpan duration = (DateTime.Now - vehicle.ParkingTime);
             double totalPrice = duration.TotalMinutes * vehicle.PricePerHour / 60.0;
 
