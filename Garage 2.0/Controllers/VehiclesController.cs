@@ -137,7 +137,7 @@ namespace Garage.Controllers
             Vehicle vehicle = db.Vehicles.FirstOrDefault(v => v.Registration.Equals(Search));
             if (vehicle == null)
             {
-                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
             }
             return View("~/Views/Vehicles/CheckOut.cshtml", vehicle);
         }
@@ -156,6 +156,19 @@ namespace Garage.Controllers
             //db.Vehicles.Remove(vehicle);
             //db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Receipt(int id)
+        {
+            Vehicle vehicle = db.Vehicles.Find(id);
+            TimeSpan duration = (DateTime.Now - vehicle.ParkingTime);
+            double totalPrice = duration.TotalMinutes * vehicle.PricePerHour / 60.0;
+
+            vehicle.TotalPrice = totalPrice;
+            db.Entry(vehicle).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return View(vehicle);
         }
 
         protected override void Dispose(bool disposing)

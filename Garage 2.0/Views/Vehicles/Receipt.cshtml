@@ -1,0 +1,38 @@
+﻿@model Garage.Models.Vehicle
+
+@{
+    ViewBag.Title = "Receipt";
+}
+
+<h2>Receipt</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <b>Check-in time</b>
+        </div>
+        <div class="col-md-2">
+            @Model.ParkingTime.ToString("yyyy-MM-dd HH:mm")
+        </div>
+        <div class="col-md-8">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <b>Check-out time</b>
+        </div>
+        <div class="col-md-2">
+            <!--@ Model.CheckoutTime.ToString("yyyy-MM-dd HH:mm")-->
+        </div>
+        <div class="col-md-8">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <b>Parking fee</b>
+        </div>
+        <div class="col-md-2">
+            @Model.TotalPrice
+        </div>
+        <div class="col-md-8">&nbsp;</div>
+    </div>
+</div>
+
