@@ -96,7 +96,17 @@ namespace Garage.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vehicle).State = EntityState.Modified;
+                Vehicle _vehicle = db.Vehicles.Find(vehicle.Id);
+                if (_vehicle == null)
+                {
+                    return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+                }
+                _vehicle.Registration = vehicle.Registration;
+                _vehicle.VehicleBrand = vehicle.VehicleBrand;
+                _vehicle.VehicleType = vehicle.VehicleType;
+                _vehicle.Color = vehicle.Color;
+
+                db.Entry(_vehicle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
