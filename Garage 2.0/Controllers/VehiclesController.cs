@@ -106,7 +106,7 @@ namespace Garage.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index");
+                return View("~/Views/Vehicles/CheckOut_alt.cshtml");
             }
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
@@ -116,10 +116,35 @@ namespace Garage.Controllers
             return View(vehicle);
         }
 
+        [HttpGet, ActionName("CheckOutSearch")]
+        public ActionResult Search()
+        {
+            return View("~/Views/Vehicles/CheckOut_alt.cshtml");
+        }
+
+        [HttpPost, ActionName("CheckOutSearch")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteSearch(FormCollection Collection)
+        {
+            string Search = Collection["Registration"];
+            if (string.IsNullOrEmpty(Search) || string.IsNullOrWhiteSpace(Search))
+            {
+                ViewBag.Wrong = "Please, add a registration number";
+                return View("~/Views/Vehicles/CheckOut_alt.cshtml");
+            }
+
+            Vehicle vehicle = db.Vehicles.FirstOrDefault(v => v.Registration.Equals(Search));
+            if (vehicle == null)
+            {
+                return RedirectToAction("Index", new { Message = Url.Encode("Veichle not found") });
+            }
+            return View("~/Views/Vehicles/CheckOut.cshtml", vehicle);
+        }
+
         // POST: Vehicles/CheckOut/5
         [HttpPost, ActionName("CheckOut")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id, FormCollection Collection)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
             vehicle.CheckoutTime = DateTime.Now;
