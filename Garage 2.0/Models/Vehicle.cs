@@ -45,7 +45,7 @@ namespace Garage.Models
         public double TotalPrice { get; set; }
 
         [DisplayName("Price Per Hour")]
-        public double? PricePerHour { get; set; }
+        public double PricePerHour { get; set; }
 
         [DisplayName("Is Parked?")]
         public bool IsParked { get; set; }        
