@@ -58,7 +58,7 @@ namespace Garage.Controllers
             {
                 vehicle.IsParked = true;
                 vehicle.ParkingTime = DateTime.Now;
-                vehicle.CheckoutTime = DateTime.MinValue;
+                vehicle.CheckoutTime = new DateTime(1970, 1, 1);
                 vehicle.TotalPrice = 60; // TODO: add from config
                 vehicle.PricePerHour = 60; // TODO: also from config
                 vehicle.Color = vehicle.Color.ToUpper();
