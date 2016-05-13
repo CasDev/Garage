@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201605130925258_Fourth.Designer.cs">
       <DependentUpon>201605130925258_Fourth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605131246136_Fifth.cs" />
+    <Compile Include="Migrations\201605131246136_Fifth.Designer.cs">
+      <DependentUpon>201605131246136_Fifth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -259,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605130925258_Fourth.resx">
       <DependentUpon>201605130925258_Fourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605131246136_Fifth.resx">
+      <DependentUpon>201605131246136_Fifth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

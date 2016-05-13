@@ -16,6 +16,7 @@ namespace Garage.Controllers
         private DataAccess.Database db = new DataAccess.Database();
 
         // GET: Vehicles
+        [ValidateInput(false)]
         public ActionResult Index(string Message)
         {
             if (!string.IsNullOrEmpty(Message))

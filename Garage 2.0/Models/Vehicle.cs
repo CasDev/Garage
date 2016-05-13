@@ -39,7 +39,7 @@ namespace Garage.Models
 
         [DisplayName("Parked To")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
-        public DateTime? CheckoutTime { get; set; }
+        public DateTime CheckoutTime { get; set; }
 
         [DisplayName("Total Price")]
         public double TotalPrice { get; set; }

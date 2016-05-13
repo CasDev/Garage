@@ -17,7 +17,7 @@
 * CheckOutTime (DateTime)
 * TotalPrice (double)
 * PricePerHour (double)
-* IsParked (bool) // IsParked { get { return (this.CheckOutTime != null) } } might be a future idea
+* IsParked (bool)
 
 ## The controller
 
