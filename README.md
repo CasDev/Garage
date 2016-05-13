@@ -32,7 +32,7 @@
 * CheckOut
   * Vehicle.CheckOutTime is set to DateTime.Now and Vehicle.IsParked=false
   * Produce a receipt
-  * calculate price ( Vehicle.PricePerHour = Vehicle.Price, Vehicle.Price = ( Vehicle.Price * amountOfHours ) )
+  * calculate price ( Vehicle.PricePerHour = Vehicle.TotalPrice, Vehicle.TotalPrice = ( Vehicle.TotalPrice * amountOfHours ) )
   * set IsParked to false
 * Filtering
   * Search by Registration number  

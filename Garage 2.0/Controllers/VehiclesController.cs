@@ -18,7 +18,7 @@ namespace Garage.Controllers
         // GET: Vehicles
         public ActionResult Index()
         {
-            return View(db.Vehicles.ToList());
+            return View(db.Vehicles.Where(v => v.IsParked == true).ToList());
         }
 
         // GET: Vehicles/Details/5
@@ -119,6 +119,7 @@ namespace Garage.Controllers
         {
             Vehicle vehicle = db.Vehicles.Find(id);
             vehicle.CheckoutTime = DateTime.Now;
+            
             vehicle.IsParked = false;
             db.Entry(vehicle).State = EntityState.Modified;
             db.SaveChanges();
