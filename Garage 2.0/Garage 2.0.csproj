@@ -238,6 +238,7 @@
     <Content Include="Views\Vehicles\Index.cshtml" />
     <Content Include="Views\Vehicles\CheckOut_alt.cshtml" />
     <Content Include="Views\Vehicles\Receipt.cshtml" />
+    <Content Include="Views\Vehicles\Historic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

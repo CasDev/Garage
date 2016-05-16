@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Garage.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Historic View";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Registration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleBrand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkingTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckoutTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PricePerHour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsParked)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleBrand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckoutTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsParked)
+            </td>
+        </tr>
+    }
+
+</table>
