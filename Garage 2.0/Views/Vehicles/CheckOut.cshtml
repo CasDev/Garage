@@ -78,7 +78,7 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("CheckOut/"+ Model.Id, "Vehicles")) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

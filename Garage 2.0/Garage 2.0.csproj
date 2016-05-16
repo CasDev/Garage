@@ -178,12 +178,21 @@
     <Compile Include="Migrations\201605121401076_Third.Designer.cs">
       <DependentUpon>201605121401076_Third.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605130925258_Fourth.cs" />
+    <Compile Include="Migrations\201605130925258_Fourth.Designer.cs">
+      <DependentUpon>201605130925258_Fourth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605131246136_Fifth.cs" />
+    <Compile Include="Migrations\201605131246136_Fifth.Designer.cs">
+      <DependentUpon>201605131246136_Fifth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\default.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -227,6 +236,8 @@
     <Content Include="Views\Vehicles\Details.cshtml" />
     <Content Include="Views\Vehicles\Edit.cshtml" />
     <Content Include="Views\Vehicles\Index.cshtml" />
+    <Content Include="Views\Vehicles\CheckOut_alt.cshtml" />
+    <Content Include="Views\Vehicles\Receipt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +262,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605121401076_Third.resx">
       <DependentUpon>201605121401076_Third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130925258_Fourth.resx">
+      <DependentUpon>201605130925258_Fourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605131246136_Fifth.resx">
+      <DependentUpon>201605131246136_Fifth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

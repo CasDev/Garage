@@ -34,16 +34,18 @@ namespace Garage.Models
         public string Color { get; set; }
 
         [DisplayName("Parked Since")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime ParkingTime { get; set; }
 
         [DisplayName("Parked To")]
-        public DateTime? CheckoutTime { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
+        public DateTime CheckoutTime { get; set; }
 
         [DisplayName("Total Price")]
         public double TotalPrice { get; set; }
 
         [DisplayName("Price Per Hour")]
-        public double? PricePerHour { get; set; }
+        public double PricePerHour { get; set; }
 
         [DisplayName("Is Parked?")]
         public bool IsParked { get; set; }        
