@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Garage.DataAccess;
 using Garage.Models;
+using System.Configuration;
+using System.Globalization;
 
 namespace Garage.Controllers
 {
@@ -69,11 +71,23 @@ namespace Garage.Controllers
         {
             if (ModelState.IsValid)
             {
+                double DefaultMoney = 0;
+                string _DefaultPricePerHour = ConfigurationManager.AppSettings["DefaultPricePerHour"];
+                if (_DefaultPricePerHour == null)
+                {
+                    _DefaultPricePerHour = "0";
+                }
+                _DefaultPricePerHour = _DefaultPricePerHour.Replace('.', ',').Trim().Replace(" ", "");
+
+                NumberStyles style = NumberStyles.AllowDecimalPoint;
+                CultureInfo culture = CultureInfo.CreateSpecificCulture("se-SV");
+                Double.TryParse(_DefaultPricePerHour, style, culture, out DefaultMoney);
+
                 vehicle.IsParked = true;
                 vehicle.ParkingTime = DateTime.Now;
                 vehicle.CheckoutTime = new DateTime(1970, 1, 1);
-                vehicle.TotalPrice = 60; // TODO: add from config
-                vehicle.PricePerHour = 60; // TODO: also from config
+                vehicle.TotalPrice = DefaultMoney;
+                vehicle.PricePerHour = DefaultMoney;
                 vehicle.Color = vehicle.Color.ToUpper();
                 vehicle.Registration = vehicle.Registration.ToUpper();
 
