@@ -13,19 +13,6 @@ using System.Globalization;
 
 namespace Garage.Controllers
 {
-    public enum VehicleColumns
-    {
-        Id,
-        VehicleType,
-        VehicleBrand,
-        Color,
-        ParkingTime,
-        CheckOutTime,
-        TotalPrice,
-        PricePerHour,
-        IsParked
-    }
-
     public class VehiclesController : Controller
     {
         private DataAccess.Database db = new DataAccess.Database();
