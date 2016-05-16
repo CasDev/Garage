@@ -10,6 +10,16 @@
     @Html.ActionLink("Park Vehicle", "Park")<br />
     @Html.ActionLink("See hisrory", "Historic")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by search: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+
 @if (ViewBag.Message != null)
 {
     <p>
@@ -19,7 +29,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Registration)
+            @Html.ActionLink("Registration", "Index", new { sortOrder = ViewBag.RegistrationSortParm })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VehicleType)
@@ -31,7 +41,7 @@
             @Html.DisplayNameFor(model => model.Color)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ParkingTime)
+            @Html.ActionLink("Parked Since", "Index", new { sortOrder = ViewBag.ParkingTimeParm})
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CheckoutTime)

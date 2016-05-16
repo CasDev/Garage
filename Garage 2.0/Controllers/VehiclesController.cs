@@ -13,19 +13,55 @@ using System.Globalization;
 
 namespace Garage.Controllers
 {
+    public enum VehicleColumns
+    {
+        Id,
+        VehicleType,
+        VehicleBrand,
+        Color,
+        ParkingTime,
+        CheckOutTime,
+        TotalPrice,
+        PricePerHour,
+        IsParked
+    }
+
     public class VehiclesController : Controller
     {
         private DataAccess.Database db = new DataAccess.Database();
 
         // GET: Vehicles
         [ValidateInput(false)]
-        public ActionResult Index(string Message)
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            if (!string.IsNullOrEmpty(Message) || !string.IsNullOrWhiteSpace(Message))
+            ViewBag.RegistrationSortParm = String.IsNullOrEmpty(sortOrder) ? "registration_desc" : "";
+            ViewBag.ParkingTimeParm = sortOrder == "ParkingTime" ? "parkingtime_desc" : "ParkingTime";
+
+            var vehicles = db.Vehicles.Where(v => v.IsParked == true);
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-                ViewBag.Message = HttpUtility.UrlDecode(Message);
+                vehicles = vehicles.Where(v => v.Registration.Contains(searchString) || v.Color.Contains(searchString));
+
             }
-            return View(db.Vehicles.Where(v => v.IsParked == true).ToList());
+
+            switch (sortOrder)
+            {
+                case "registration_desc":
+                    vehicles = vehicles.OrderByDescending(v => v.Registration);
+                    break;
+                case "ParkingTime":
+                    vehicles = vehicles.OrderBy(v => v.ParkingTime);
+                    break;
+                case "parkingtime_desc":
+                    vehicles = vehicles.OrderByDescending(v => v.ParkingTime);
+                    break;
+                default:
+                    vehicles = vehicles.OrderBy(v => v.Registration);
+                    break;
+            }
+
+            return View(vehicles.ToList());
         }
 
         public ActionResult Historic()
