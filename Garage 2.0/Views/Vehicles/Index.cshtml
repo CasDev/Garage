@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Garage.Models.Vehicle>
+﻿@model PagedList.IPagedList<Garage.Models.Vehicle>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -8,7 +9,7 @@
 
 <p>
     @Html.ActionLink("Park Vehicle", "Park")<br />
-    @Html.ActionLink("See hisrory", "Historic")
+    @Html.ActionLink("See history", "Historic")
 </p>
 
 @using (Html.BeginForm())
@@ -29,31 +30,31 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Registration", "Index", new { sortOrder = ViewBag.RegistrationSortParm })
+            @Html.ActionLink("Registration", "Index", new { sortOrder = ViewBag.RegistrationSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VehicleType)
+            Vehicle Type
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VehicleBrand)
+            Vehicle Brand
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Color)
+            @Html.ActionLink("Color", "Index", new { sortOrder = ViewBag.ColorParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Parked Since", "Index", new { sortOrder = ViewBag.ParkingTimeParm})
+            @Html.ActionLink("Parked Since", "Index", new { sortOrder = ViewBag.ParkingTimeParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CheckoutTime)
+            Checkout Time
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TotalPrice)
+            Total Price
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PricePerHour)
+            Price Per Hour
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsParked)
+            Is Parked?
         </th>
         <th></th>
     </tr>
@@ -96,3 +97,8 @@
 }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

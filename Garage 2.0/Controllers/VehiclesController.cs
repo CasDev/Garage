@@ -10,6 +10,7 @@ using Garage.DataAccess;
 using Garage.Models;
 using System.Configuration;
 using System.Globalization;
+using PagedList;
 
 namespace Garage.Controllers
 {
@@ -19,12 +20,24 @@ namespace Garage.Controllers
 
         // GET: Vehicles
         [ValidateInput(false)]
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            ViewBag.RegistrationSortParm = String.IsNullOrEmpty(sortOrder) ? "registration_desc" : "";
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.RegistrationParm = String.IsNullOrEmpty(sortOrder) ? "registration_desc" : "";
             ViewBag.ParkingTimeParm = sortOrder == "ParkingTime" ? "parkingtime_desc" : "ParkingTime";
+            ViewBag.ColorParm = String.IsNullOrEmpty(sortOrder) ? "color_desc" : "Color";
 
             var vehicles = db.Vehicles.Where(v => v.IsParked == true);
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -43,12 +56,22 @@ namespace Garage.Controllers
                 case "parkingtime_desc":
                     vehicles = vehicles.OrderByDescending(v => v.ParkingTime);
                     break;
+                case "color_desc":
+                    vehicles = vehicles.OrderByDescending(v => v.Color);
+                    break;
+                case "Color":
+                    vehicles = vehicles.OrderBy(v => v.Color);
+                    break;
                 default:
                     vehicles = vehicles.OrderBy(v => v.Registration);
                     break;
             }
 
-            return View(vehicles.ToList());
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(vehicles.ToPagedList(pageNumber, pageSize));
+            
+            //return View(vehicles.ToList());
         }
 
         public ActionResult Historic()
