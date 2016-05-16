@@ -30,13 +30,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Registration", "Index", new { sortOrder = ViewBag.RegistrationSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Registration", "Index", new { sortOrder = ViewBag.RegistrationParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            Vehicle Type
+            @Html.ActionLink("Vehicle Type", "Index", new { sortOrder = ViewBag.VehicleTypeParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            Vehicle Brand
+            @Html.ActionLink("Vehicle Brand", "Index", new { sortOrder = ViewBag.VehicleBrandParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             @Html.ActionLink("Color", "Index", new { sortOrder = ViewBag.ColorParm, currentFilter = ViewBag.CurrentFilter })

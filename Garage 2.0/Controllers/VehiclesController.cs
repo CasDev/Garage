@@ -26,6 +26,8 @@ namespace Garage.Controllers
             ViewBag.RegistrationParm = String.IsNullOrEmpty(sortOrder) ? "registration_desc" : "";
             ViewBag.ParkingTimeParm = sortOrder == "ParkingTime" ? "parkingtime_desc" : "ParkingTime";
             ViewBag.ColorParm = String.IsNullOrEmpty(sortOrder) ? "color_desc" : "Color";
+            ViewBag.VehicleTypeParm = String.IsNullOrEmpty(sortOrder) ? "vehicletype_desc" : "VehicleType";
+            ViewBag.VehicleBrandParm = String.IsNullOrEmpty(sortOrder) ? "vehiclebrand_desc" : "VehicleBrand";
 
             var vehicles = db.Vehicles.Where(v => v.IsParked == true);
 
@@ -41,8 +43,10 @@ namespace Garage.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                vehicles = vehicles.Where(v => v.Registration.Contains(searchString) || v.Color.Contains(searchString));
-
+                vehicles = vehicles.Where(v => v.Registration.Contains(searchString) ||
+                                          v.Color.Contains(searchString) ||
+                                          searchString.Contains(v.VehicleType.ToString()) ||
+                                          searchString.Contains(v.VehicleBrand.ToString()));
             }
 
             switch (sortOrder)
@@ -50,11 +54,23 @@ namespace Garage.Controllers
                 case "registration_desc":
                     vehicles = vehicles.OrderByDescending(v => v.Registration);
                     break;
-                case "ParkingTime":
-                    vehicles = vehicles.OrderBy(v => v.ParkingTime);
+                case "vehicletype_desc":
+                    vehicles = vehicles.OrderByDescending(v => v.VehicleType);
+                    break;
+                case "VehicleType":
+                    vehicles = vehicles.OrderBy(v => v.VehicleType);
+                    break;
+                case "vehiclebrand_desc":
+                    vehicles = vehicles.OrderByDescending(v => v.VehicleBrand);
+                    break;
+                case "VehicleBrand":
+                    vehicles = vehicles.OrderBy(v => v.VehicleBrand);
                     break;
                 case "parkingtime_desc":
                     vehicles = vehicles.OrderByDescending(v => v.ParkingTime);
+                    break;
+                case "ParkingTime":
+                    vehicles = vehicles.OrderBy(v => v.ParkingTime);
                     break;
                 case "color_desc":
                     vehicles = vehicles.OrderByDescending(v => v.Color);
