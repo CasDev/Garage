@@ -2,7 +2,24 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List of Vehicles";
+
+    string SearchUrl = "Vehicles/";
+    if (ViewBag.RegistrationParm != null)
+    {
+        string RegistrationParm = ViewBag.RegistrationParm;
+        SearchUrl += "?sortOrder=" + RegistrationParm;
+
+        if (ViewBag.CurrentFilter != null)
+        {
+            string CurrentFilter = ViewBag.CurrentFilter;
+            SearchUrl += "&currentFilter=" + CurrentFilter;
+        }
+    } else if (ViewBag.CurrentFilter != null)
+    {
+        string CurrentFilter = ViewBag.CurrentFilter;
+        SearchUrl += "?currentFilter=" + CurrentFilter;
+    }
 }
 
 <h2>Parked vehicles</h2>
@@ -12,13 +29,12 @@
     @Html.ActionLink("See History", "Historic")
 </p>
 
-@using (Html.BeginForm())
-{
+<form action="@Url.Content("~/" + SearchUrl)">
     <p>
         Find by search: @Html.TextBox("searchString")
         <input type="submit" value="Search" />
     </p>
-}
+</form>
 
 
 @if (ViewBag.Message != null)

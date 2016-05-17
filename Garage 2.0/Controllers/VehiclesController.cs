@@ -22,8 +22,7 @@ namespace Garage.Controllers
         [ValidateInput(false)]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string Message)
         {
-             ViewBag.Message = (Message != null ? HttpUtility.UrlDecode(Message) : null);
-       
+            ViewBag.Message = (Message != null ? HttpUtility.UrlDecode(Message) : null);
 
             ViewBag.CurrentSort = sortOrder;
             ViewBag.RegistrationParm = String.IsNullOrEmpty(sortOrder) ? "registration_desc" : "";
