@@ -10,11 +10,6 @@
 <p>
     @Html.ActionLink("Park Vehicle", "Park")<br />
     @Html.ActionLink("See History", "Historic")
-    @if (ViewBag.Message != null)
-    {
-        <br />
-        @ViewBag.Message
-    }
 </p>
 
 @using (Html.BeginForm())
