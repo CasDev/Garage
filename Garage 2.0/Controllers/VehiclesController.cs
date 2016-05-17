@@ -20,8 +20,13 @@ namespace Garage.Controllers
 
         // GET: Vehicles
         [ValidateInput(false)]
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string Message)
         {
+            if (Message != null)
+            {
+                ViewBag.Message = HttpUtility.UrlDecode(Message);
+            }
+
             ViewBag.CurrentSort = sortOrder;
             ViewBag.RegistrationParm = String.IsNullOrEmpty(sortOrder) ? "registration_desc" : "";
             ViewBag.ParkingTimeParm = sortOrder == "ParkingTime" ? "parkingtime_desc" : "ParkingTime";

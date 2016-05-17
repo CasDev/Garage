@@ -5,11 +5,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Parked vehicles</h2>
 
 <p>
     @Html.ActionLink("Park Vehicle", "Park")<br />
-    @Html.ActionLink("See history", "Historic")
+    @Html.ActionLink("See History", "Historic")
+    @if (ViewBag.Message != null)
+    {
+        <br />
+        @ViewBag.Message
+    }
 </p>
 
 @using (Html.BeginForm())
