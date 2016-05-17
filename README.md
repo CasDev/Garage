@@ -49,3 +49,7 @@
   * /Vehicles/CheckOutVehicle
   * /Vehicles/ViewVehicles
  
+
+ ### Sorting, filtering and paging
+
+ Support for sorting, filtering and paging has been added to the index view of the vehicles.

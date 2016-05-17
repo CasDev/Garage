@@ -45,17 +45,9 @@
             @Html.ActionLink("Parked Since", "Index", new { sortOrder = ViewBag.ParkingTimeParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            Checkout Time
-        </th>
-        <th>
-            Total Price
-        </th>
-        <th>
             Price Per Hour
         </th>
-        <th>
-            Is Parked?
-        </th>
+
         <th></th>
     </tr>
 
@@ -76,18 +68,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.ParkingTime)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckoutTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalPrice)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.PricePerHour)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsParked)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

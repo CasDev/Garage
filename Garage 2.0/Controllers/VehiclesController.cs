@@ -25,9 +25,9 @@ namespace Garage.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.RegistrationParm = String.IsNullOrEmpty(sortOrder) ? "registration_desc" : "";
             ViewBag.ParkingTimeParm = sortOrder == "ParkingTime" ? "parkingtime_desc" : "ParkingTime";
-            ViewBag.ColorParm = String.IsNullOrEmpty(sortOrder) ? "color_desc" : "Color";
-            ViewBag.VehicleTypeParm = String.IsNullOrEmpty(sortOrder) ? "vehicletype_desc" : "VehicleType";
-            ViewBag.VehicleBrandParm = String.IsNullOrEmpty(sortOrder) ? "vehiclebrand_desc" : "VehicleBrand";
+            ViewBag.ColorParm = sortOrder == "Color" ? "color_desc" : "Color";
+            ViewBag.VehicleTypeParm = sortOrder == "VehicleType" ? "vehicletype_desc" : "VehicleType";
+            ViewBag.VehicleBrandParm = sortOrder == "VehicleBrand" ? "vehiclebrand_desc" : "VehicleBrand";
 
             var vehicles = db.Vehicles.Where(v => v.IsParked == true);
 
@@ -87,7 +87,6 @@ namespace Garage.Controllers
             int pageNumber = (page ?? 1);
             return View(vehicles.ToPagedList(pageNumber, pageSize));
             
-            //return View(vehicles.ToList());
         }
 
         public ActionResult Historic()
