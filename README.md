@@ -28,7 +28,7 @@
   * Filter by Vehicle.IsParked to find current, and historical, parkings
 * Park
   * Vehicle.ParkingTime is set to DateTime.Now
-  * Vehicle.TotalPrice is set to current price, or 0 ( zero )
+  * Vehicle.TotalPrice is set to 0 ( zero )
   * Vehicle.PricePerHour is set to current price
 * CheckOut
   * Vehicle.CheckOutTime is set to DateTime.Now and Vehicle.IsParked=false
