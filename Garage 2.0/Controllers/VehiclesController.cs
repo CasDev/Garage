@@ -230,7 +230,7 @@ namespace Garage.Controllers
             Vehicle vehicle = db.Vehicles.FirstOrDefault(v => v.Registration.Equals(Search));
             if (vehicle == null)
             {
-                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
+                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found"), searchString = Search });
             }
             return View("~/Views/Vehicles/CheckOut.cshtml", vehicle);
         }

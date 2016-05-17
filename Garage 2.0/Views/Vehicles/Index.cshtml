@@ -15,7 +15,8 @@
             string CurrentFilter = ViewBag.CurrentFilter;
             SearchUrl += "&currentFilter=" + CurrentFilter;
         }
-    } else if (ViewBag.CurrentFilter != null)
+    }
+    else if (ViewBag.CurrentFilter != null)
     {
         string CurrentFilter = ViewBag.CurrentFilter;
         SearchUrl += "?currentFilter=" + CurrentFilter;
@@ -30,19 +31,31 @@
 </p>
 
 <form action="@Url.Content("~/" + SearchUrl)">
-    <p>
-        Find by search: @Html.TextBox("searchString")
-        <input type="submit" value="Search" />
-    </p>
+    <table class="search">
+        <tr>
+            <td>
+                Find by search: 
+            </td>
+            <td>
+                @Html.TextBox("searchString")
+            </td>
+            <td>
+                <input type="submit" value="Search" />
+            </td>
+        </tr>
+        @if (ViewBag.Message != null)
+        {
+            <tr>
+                <td></td>
+                <td>
+                    <p class="warning">
+                        @ViewBag.Message
+                    </p>
+                </td>
+            </tr>
+        }
+        </table>
 </form>
-
-
-@if (ViewBag.Message != null)
-{
-    <p>
-        @ViewBag.Message
-    </p>
-}
 <table class="table">
     <tr>
         <th>
@@ -67,35 +80,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Registration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleBrand)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkingTime)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleBrand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingTime)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.PricePerHour)
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerHour)
+            </td>
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Check Out", "CheckOut", new { id=item.Id })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Check Out", "CheckOut", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
 <br />
