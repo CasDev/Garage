@@ -41,9 +41,11 @@ namespace Garage.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime CheckoutTime { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:#####.##}")]
         [DisplayName("Total Price")]
         public double TotalPrice { get; set; }
-
+        
+        [DisplayFormat(DataFormatString = "{0:#####.##}")]
         [DisplayName("Price Per Hour")]
         public double PricePerHour { get; set; }
 

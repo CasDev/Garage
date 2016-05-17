@@ -4,7 +4,7 @@
     ViewBag.Title = "Historic View";
 }
 
-<h2>Index</h2>
+<h2>History review</h2>
 
 <table class="table">
     <tr>
@@ -32,10 +32,6 @@
         <th>
             @Html.DisplayNameFor(model => model.PricePerHour)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsParked)
-        </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -64,9 +60,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PricePerHour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsParked)
             </td>
         </tr>
     }
