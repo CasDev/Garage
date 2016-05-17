@@ -21,7 +21,7 @@ namespace Garage.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "You need to add registration number")]
+        [Required(ErrorMessage = "You need to specify a registration number")]
         public string Registration { get; set; }
 
         [DisplayName("Vehicle Type")]
@@ -30,7 +30,7 @@ namespace Garage.Models
         [DisplayName("Vehicle Brand")]
         public VehicleBrand VehicleBrand { get; set; }
 
-        [Required(ErrorMessage = "You need to add a color")]
+        [Required(ErrorMessage = "You need to specify a color")]
         public string Color { get; set; }
 
         [DisplayName("Parked Since")]
