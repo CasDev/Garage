@@ -28,7 +28,7 @@
   * Filter by Vehicle.IsParked to find current, and historical, parkings
 * Park
   * Vehicle.ParkingTime is set to DateTime.Now
-  * Vehicle.TotalPrice is set to current price, or 0 ( zero )
+  * Vehicle.TotalPrice is set to 0 ( zero )
   * Vehicle.PricePerHour is set to current price
 * CheckOut
   * Vehicle.CheckOutTime is set to DateTime.Now and Vehicle.IsParked=false
@@ -50,6 +50,6 @@
   * /Vehicles/ViewVehicles
  
 
- ### Sorting, filtering and paging
+### Sorting, filtering and paging
 
- Support for sorting, filtering and paging has been added to the index view of the vehicles.
+Support for sorting, filtering and paging has been added to the index view of the vehicles.
