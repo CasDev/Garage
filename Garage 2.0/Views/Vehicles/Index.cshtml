@@ -59,19 +59,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Registration", "Index", new { sortOrder = ViewBag.RegistrationParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Registration", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.RegistrationParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Vehicle Type", "Index", new { sortOrder = ViewBag.VehicleTypeParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Vehicle Type", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.VehicleTypeParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Vehicle Brand", "Index", new { sortOrder = ViewBag.VehicleBrandParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Vehicle Brand", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.VehicleBrandParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Color", "Index", new { sortOrder = ViewBag.ColorParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Color", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.ColorParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Parked Since", "Index", new { sortOrder = ViewBag.ParkingTimeParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Parked Since", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.ParkingTimeParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             Price Per Hour
