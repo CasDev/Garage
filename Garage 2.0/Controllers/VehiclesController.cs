@@ -126,6 +126,16 @@ namespace Garage.Controllers
         {
             if (ModelState.IsValid)
             {
+                string regNumber = vehicle.Registration.ToUpper();
+
+                var result = db.Vehicles.Where(v => v.Registration == regNumber).ToList();
+
+                if (result.Count > 0)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                
                 double DefaultMoney = 0;
                 string _DefaultPricePerHour = ConfigurationManager.AppSettings["DefaultPricePerHour"];
                 if (_DefaultPricePerHour == null)
