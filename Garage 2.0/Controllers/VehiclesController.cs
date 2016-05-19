@@ -128,13 +128,9 @@ namespace Garage.Controllers
             {
                 string regNumber = vehicle.Registration.ToUpper();
 
-                var result = db.Vehicles.Where(v => v.Registration == regNumber).ToList();
-
-                if (result.Count > 0)
-                {
-                    return RedirectToAction("Index");
-                }
-
+                // check if a vehicle with that registration number
+                if (db.Vehicles.Where(v => v.IsParked == true && v.Registration.ToUpper() == regNumber).Any())
+                    return RedirectToAction("Index", new { Message = Url.Encode("A vehicle with that registration number is already parked") } );
                 
                 double DefaultMoney = 0;
                 string _DefaultPricePerHour = ConfigurationManager.AppSettings["DefaultPricePerHour"];
@@ -158,7 +154,10 @@ namespace Garage.Controllers
 
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                
+
+                             
+                return RedirectToAction("Details", new { Id = vehicle.Id });
             }
 
             return View(vehicle);
