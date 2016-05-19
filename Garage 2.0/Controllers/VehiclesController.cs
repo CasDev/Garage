@@ -126,10 +126,8 @@ namespace Garage.Controllers
         {
             if (ModelState.IsValid)
             {
-                string regNumber = vehicle.Registration.ToUpper();
-
                 // check if a vehicle with that registration number
-                if (db.Vehicles.Where(v => v.IsParked == true && v.Registration.ToUpper() == regNumber).Any())
+                if (db.Vehicles.Where(v => v.IsParked == true && v.Registration.ToUpper() == vehicle.Registration.ToUpper()).Any())
                     return RedirectToAction("Index", new { Message = Url.Encode("A vehicle with that registration number is already parked") } );
                 
                 double DefaultMoney = 0;
@@ -185,6 +183,10 @@ namespace Garage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Registration,VehicleType,VehicleBrand,Color")] Vehicle vehicle)
         {
+
+            if (db.Vehicles.Where(v => v.IsParked == true && v.Registration.ToUpper() == vehicle.Registration.ToUpper()).Any())
+                return RedirectToAction("Index", new { Message = Url.Encode("A vehicle with that registration number is already parked") });
+
             if (ModelState.IsValid)
             {
                 Vehicle _vehicle = db.Vehicles.Find(vehicle.Id);
