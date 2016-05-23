@@ -26,8 +26,8 @@
 <h2>Parked vehicles</h2>
 
 <p>
-    @Html.ActionLink("Park Vehicle", "Park")<br />
-    @Html.ActionLink("See History", "Historic")
+    <a class="btn btn-success" href="@Url.Content("~/Vehicles/Park")">Park Vehicle &raquo;</a>
+    <a class="btn btn-default" href="@Url.Content("~/Vehicles/Historic")">History &raquo;</a>
 </p>
 
 <form action="@Url.Content("~/" + SearchUrl)">

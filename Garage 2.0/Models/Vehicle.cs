@@ -9,7 +9,7 @@ namespace Garage.Models
 {
     public enum VehicleType
     {
-        OTHER, CAR, BUS, MC, CARRIER
+        OTHER, BUS, CAR, CARRIER, MC
     }
 
     public enum VehicleBrand
