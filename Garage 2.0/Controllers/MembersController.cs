@@ -16,9 +16,16 @@ namespace Garage.Controllers
         private DataAccess.Database db = new DataAccess.Database();
 
         // GET: Members
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Members.ToList());
+            var members = db.Members.ToList<Member>();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                members = members.Where(m => m.FirstName.ToUpper().Contains(searchString.ToUpper()) 
+                                          || m.LastName.ToUpper().Contains(searchString.ToUpper())).ToList();
+            }
+            return View(members);
         }
 
         // GET: Members/Details/5
