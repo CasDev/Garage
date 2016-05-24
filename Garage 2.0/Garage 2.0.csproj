@@ -165,6 +165,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\Vehicles2Controller.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="DataAccess\Database.cs" />
@@ -206,6 +207,10 @@
     <Compile Include="Migrations\201605240821490_Eighth.cs" />
     <Compile Include="Migrations\201605240821490_Eighth.Designer.cs">
       <DependentUpon>201605240821490_Eighth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605240927216_Ninth.cs" />
+    <Compile Include="Migrations\201605240927216_Ninth.Designer.cs">
+      <DependentUpon>201605240927216_Ninth.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Member.cs" />
@@ -269,6 +274,11 @@
     <Content Include="Views\Vehicles2\Details.cshtml" />
     <Content Include="Views\Vehicles2\Edit.cshtml" />
     <Content Include="Views\Vehicles2\Index.cshtml" />
+    <Content Include="Views\Members\Create.cshtml" />
+    <Content Include="Views\Members\Delete.cshtml" />
+    <Content Include="Views\Members\Details.cshtml" />
+    <Content Include="Views\Members\Edit.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -308,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605240821490_Eighth.resx">
       <DependentUpon>201605240821490_Eighth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605240927216_Ninth.resx">
+      <DependentUpon>201605240927216_Ninth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
