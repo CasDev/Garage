@@ -52,6 +52,7 @@ namespace Garage.Controllers
         {
             if (ModelState.IsValid)
             {
+                vehicleType.Type = vehicleType.Type.ToUpper();
                 db.VehicleTypes.Add(vehicleType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -85,6 +86,7 @@ namespace Garage.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(vehicleType).State = EntityState.Modified;
+                vehicleType.Type = vehicleType.Type.ToUpper();
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
