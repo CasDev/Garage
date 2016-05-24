@@ -190,9 +190,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-td,
+td {
+    padding: 0px;
+}
 th {
   padding: 0;
+  background-color: #f6f6f6;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
