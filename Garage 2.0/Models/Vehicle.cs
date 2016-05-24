@@ -7,11 +7,6 @@ using System.Web;
 
 namespace Garage.Models
 {
-    public enum VehicleType
-    {
-        OTHER, BUS, CAR, CARRIER, MC
-    }
-
     public enum VehicleBrand
     {
         OTHER, AUDI, BMW, MERCEDES
@@ -25,8 +20,9 @@ namespace Garage.Models
         [MaxLength(101, ErrorMessage = "Cannot be longer than 100 characters")]
         public string Registration { get; set; }
 
-        [DisplayName("Vehicle Type")]
-        public VehicleType VehicleType { get; set; }
+        public int VehicleTypeId { get; set; }
+
+        public virtual VehicleType VehicleType { get; set; }
 
         [DisplayName("Vehicle Brand")]
         public VehicleBrand VehicleBrand { get; set; }
@@ -35,23 +31,23 @@ namespace Garage.Models
         [MaxLength(101, ErrorMessage = "Cannot be longer then 100 characters")]
         public string Color { get; set; }
 
-        [DisplayName("Parked Since")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
-        public DateTime ParkingTime { get; set; }
+        //[DisplayName("Parked Since")]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
+        //public DateTime ParkingTime { get; set; }
 
-        [DisplayName("Parked To")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
-        public DateTime CheckoutTime { get; set; }
+        //[DisplayName("Parked To")]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
+        //public DateTime CheckoutTime { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:#####.##}")]
-        [DisplayName("Total Price")]
-        public double TotalPrice { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:#####.##}")]
+        //[DisplayName("Total Price")]
+        //public double TotalPrice { get; set; }
         
-        [DisplayFormat(DataFormatString = "{0:#####.##}")]
-        [DisplayName("Price Per Hour")]
-        public double PricePerHour { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:#####.##}")]
+        //[DisplayName("Price Per Hour")]
+        //public double PricePerHour { get; set; }
 
-        [DisplayName("Is Parked?")]
-        public bool IsParked { get; set; }        
+        //[DisplayName("Is Parked?")]
+        //public bool IsParked { get; set; }        
     }
 }

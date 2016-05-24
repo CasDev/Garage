@@ -165,6 +165,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Vehicles2Controller.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="DataAccess\Database.cs" />
     <Compile Include="Global.asax.cs">
@@ -198,8 +199,19 @@
     <Compile Include="Migrations\201605240655138_Sixth.Designer.cs">
       <DependentUpon>201605240655138_Sixth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605240808217_Seventh.cs" />
+    <Compile Include="Migrations\201605240808217_Seventh.Designer.cs">
+      <DependentUpon>201605240808217_Seventh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605240821490_Eighth.cs" />
+    <Compile Include="Migrations\201605240821490_Eighth.Designer.cs">
+      <DependentUpon>201605240821490_Eighth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\ParkedVehicle.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Models\VehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +264,11 @@
     <Content Include="Views\Vehicles\CheckOut_alt.cshtml" />
     <Content Include="Views\Vehicles\Receipt.cshtml" />
     <Content Include="Views\Vehicles\Historic.cshtml" />
+    <Content Include="Views\Vehicles2\Create.cshtml" />
+    <Content Include="Views\Vehicles2\Delete.cshtml" />
+    <Content Include="Views\Vehicles2\Details.cshtml" />
+    <Content Include="Views\Vehicles2\Edit.cshtml" />
+    <Content Include="Views\Vehicles2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +302,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605240655138_Sixth.resx">
       <DependentUpon>201605240655138_Sixth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605240808217_Seventh.resx">
+      <DependentUpon>201605240808217_Seventh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605240821490_Eighth.resx">
+      <DependentUpon>201605240821490_Eighth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

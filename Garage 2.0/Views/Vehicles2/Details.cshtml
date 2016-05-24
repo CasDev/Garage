@@ -1,0 +1,90 @@
+﻿@model Garage.Models.Vehicle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleType.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleType.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Registration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Registration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleBrand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleBrand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkingTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParkingTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckoutTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckoutTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsParked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsParked)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
