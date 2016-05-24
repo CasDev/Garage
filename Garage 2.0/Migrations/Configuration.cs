@@ -65,6 +65,15 @@ namespace Garage.Migrations
             );
             context.SaveChanges();
 
+
+            var membersList = context.Members.Include(m => m.Vehicle).ToArray();
+            membersList[0].Vehicle.Add(Vehicles[0]);
+            membersList[0].Vehicle.Add(Vehicles[2]);
+
+            membersList[1].Vehicle.Add(Vehicles[1]);
+            membersList[1].Vehicle.Add(Vehicles[3]);
+
+
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //

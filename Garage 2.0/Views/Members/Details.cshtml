@@ -50,6 +50,17 @@
             @Html.DisplayFor(model => model.City)
         </dd>
 
+        <dt>
+            Vehicles Parked:
+        </dt>
+
+        <dd>
+            @foreach (var v in Model.Vehicle)
+            {
+                @Html.DisplayFor(model => v.Registration) <br />
+            }
+        </dd>
+
     </dl>
 </div>
 <p>
