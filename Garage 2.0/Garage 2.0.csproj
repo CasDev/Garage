@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201605241243498_Changed_Navigational_Props.Designer.cs">
       <DependentUpon>201605241243498_Changed_Navigational_Props.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605241410335_Removed_ICollection_In_Vehicle_Model.cs" />
+    <Compile Include="Migrations\201605241410335_Removed_ICollection_In_Vehicle_Model.Designer.cs">
+      <DependentUpon>201605241410335_Removed_ICollection_In_Vehicle_Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\ParkedVehicle.cs" />
@@ -340,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605241243498_Changed_Navigational_Props.resx">
       <DependentUpon>201605241243498_Changed_Navigational_Props.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605241410335_Removed_ICollection_In_Vehicle_Model.resx">
+      <DependentUpon>201605241410335_Removed_ICollection_In_Vehicle_Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

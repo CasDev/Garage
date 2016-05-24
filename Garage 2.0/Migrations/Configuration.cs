@@ -73,7 +73,7 @@ namespace Garage.Migrations
             membersList[1].Vehicle.Add(Vehicles[1]);
             membersList[1].Vehicle.Add(Vehicles[3]);
 
-
+            context.SaveChanges();
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //

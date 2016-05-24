@@ -23,7 +23,7 @@ namespace Garage.Models
         [MaxLength(101, ErrorMessage = "Cannot be longer then 100 characters")]
         public string Color { get; set; }
 
-        public virtual ICollection<Member> Member { get; set; }
+        public virtual Member Member { get; set; }
 
 
 

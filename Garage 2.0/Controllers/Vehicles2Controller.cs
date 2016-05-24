@@ -18,7 +18,8 @@ namespace Garage.Controllers
         // GET: Vehicles2
         public ActionResult Index()
         {
-            return View(db.Vehicles.ToList());
+            var vehicles = db.Vehicles.Include(m => m.Member);
+            return View(vehicles.ToList());
         }
 
         // GET: Vehicles2/Details/5
