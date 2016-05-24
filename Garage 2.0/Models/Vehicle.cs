@@ -7,12 +7,7 @@ using System.Web;
 
 namespace Garage.Models
 {
-    public enum VehicleBrand
-    {
-        OTHER, AUDI, BMW, MERCEDES
-    }
-
-    public class Vehicle
+   public class Vehicle
     {
         public int Id { get; set; }
 
@@ -24,8 +19,8 @@ namespace Garage.Models
 
         public virtual VehicleType VehicleType { get; set; }
 
-        [DisplayName("Vehicle Brand")]
-        public VehicleBrand VehicleBrand { get; set; }
+        //[DisplayName("Vehicle Brand")]
+        //public VehicleBrand VehicleBrand { get; set; }
 
         [Required(ErrorMessage = "You need to specify a color")]
         [MaxLength(101, ErrorMessage = "Cannot be longer then 100 characters")]

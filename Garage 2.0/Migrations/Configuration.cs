@@ -30,13 +30,13 @@ namespace Garage.Migrations
 
             Vehicle[] Vehicles = new[]
             {
-                new Vehicle() { Registration = "ABC123", VehicleTypeId = Types[0].Id, VehicleBrand = VehicleBrand.OTHER, Color = "RED" },
-                new Vehicle() { Registration = "CAB123", VehicleTypeId = Types[1].Id, VehicleBrand = VehicleBrand.OTHER, Color = "RED" },
-                new Vehicle() { Registration = "ACB123", VehicleTypeId = Types[3].Id, VehicleBrand = VehicleBrand.OTHER, Color = "RED" },
-                new Vehicle() { Registration = "CBA123", VehicleTypeId = Types[0].Id, VehicleBrand = VehicleBrand.OTHER, Color = "RED" }
+                new Vehicle() { Registration = "ABC123", VehicleTypeId = Types[0].Id, Color = "RED" },
+                new Vehicle() { Registration = "CAB123", VehicleTypeId = Types[1].Id, Color = "RED" },
+                new Vehicle() { Registration = "ACB123", VehicleTypeId = Types[3].Id, Color = "RED" },
+                new Vehicle() { Registration = "CBA123", VehicleTypeId = Types[0].Id, Color = "RED" }
             };
 
-            context.Vehicles.AddOrUpdate(v => new { v.Registration, v.ParkingTime },
+            context.Vehicles.AddOrUpdate(v => v.Registration,
                 Vehicles
             );
             context.SaveChanges();

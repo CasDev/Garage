@@ -99,7 +99,8 @@ namespace Garage.Controllers
 
         public ActionResult Historic()
         {
-            return View(db.Vehicles.Where(v => v.IsParked == false).ToList());
+            //return View(db.Vehicles.Where(v => v.IsParked == false).ToList());
+            return View(db.Vehicles.ToList());
         }
 
         // GET: Vehicles/Details/5
@@ -133,8 +134,8 @@ namespace Garage.Controllers
             if (ModelState.IsValid)
             {
                 // check if a vehicle with that registration number
-                if (db.Vehicles.Where(v => v.IsParked == true && v.Registration.ToUpper() == vehicle.Registration.ToUpper()).Any())
-                    return RedirectToAction("Index", new { Message = Url.Encode("A vehicle with that registration number is already parked") } );
+                //if (db.Vehicles.Where(v => v.IsParked == true && v.Registration.ToUpper() == vehicle.Registration.ToUpper()).Any())
+                //    return RedirectToAction("Index", new { Message = Url.Encode("A vehicle with that registration number is already parked") } );
                 
                 double DefaultMoney = 0;
                 string _DefaultPricePerHour = ConfigurationManager.AppSettings["DefaultPricePerHour"];
@@ -201,7 +202,7 @@ namespace Garage.Controllers
                     return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
                 }
                 _vehicle.Registration = vehicle.Registration.ToUpper();
-                _vehicle.VehicleBrand = vehicle.VehicleBrand;
+                //_vehicle.VehicleBrand = vehicle.VehicleBrand;
                 _vehicle.VehicleType = vehicle.VehicleType;
                 _vehicle.Color = vehicle.Color.ToUpper();
 
@@ -279,10 +280,10 @@ namespace Garage.Controllers
             {
                 return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
             }
-            TimeSpan duration = (DateTime.Now - vehicle.ParkingTime);
-            double totalPrice = duration.TotalMinutes * vehicle.PricePerHour / 60.0;
+            //TimeSpan duration = (DateTime.Now - vehicle.ParkingTime);
+            //double totalPrice = duration.TotalMinutes * vehicle.PricePerHour / 60.0;
 
-            vehicle.TotalPrice = totalPrice;
+            //vehicle.TotalPrice = totalPrice;
             db.Entry(vehicle).State = EntityState.Modified;
             db.SaveChanges();
 
