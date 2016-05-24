@@ -64,8 +64,7 @@ namespace Garage.Controllers
             if (ModelState.IsValid)
             {
                 Member Member = db.Members.Find(vehicle.MemberTypeId);
-                vehicle.Member = (vehicle.Member != null ? vehicle.Member : new List<Member>());
-                vehicle.Member.Add(Member);
+                vehicle.Member = Member;
 
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
