@@ -85,7 +85,10 @@ namespace Garage.Controllers
                     break;
             }
 
-            int pageSize = 3;
+            string DefaultPageSize = ConfigurationManager.AppSettings["PageSize"];
+            
+            int pageSize = 1;
+            Int32.TryParse(DefaultPageSize, out pageSize);
             int pageNumber = (page ?? 1);
             return View(vehicles.ToPagedList(pageNumber, pageSize));
             
