@@ -12,31 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.VehicleType.Type)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Registration)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VehicleBrand)
+            @Html.DisplayNameFor(model => model.VehicleTypeId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ParkingTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CheckoutTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PricePerHour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsParked)
         </th>
         <th></th>
     </tr>
@@ -44,31 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.VehicleType.Type)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Registration)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.VehicleBrand)
+            @Html.DisplayFor(modelItem => item.VehicleTypeId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkingTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckoutTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PricePerHour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsParked)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

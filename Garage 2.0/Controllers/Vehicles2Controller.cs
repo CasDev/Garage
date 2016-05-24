@@ -18,8 +18,7 @@ namespace Garage.Controllers
         // GET: Vehicles2
         public ActionResult Index()
         {
-            var vehicles = db.Vehicles.Include(v => v.VehicleType);
-            return View(vehicles.ToList());
+            return View(db.Vehicles.ToList());
         }
 
         // GET: Vehicles2/Details/5
@@ -40,7 +39,6 @@ namespace Garage.Controllers
         // GET: Vehicles2/Create
         public ActionResult Create()
         {
-            ViewBag.VehicleTypeId = new SelectList(db.VehicleTypes, "Id", "Type");
             return View();
         }
 
@@ -49,7 +47,7 @@ namespace Garage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Registration,VehicleTypeId,VehicleBrand,Color,ParkingTime,CheckoutTime,TotalPrice,PricePerHour,IsParked")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "Id,Registration,VehicleTypeId,Color")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +56,6 @@ namespace Garage.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.VehicleTypeId = new SelectList(db.VehicleTypes, "Id", "Type", vehicle.VehicleTypeId);
             return View(vehicle);
         }
 
@@ -74,7 +71,6 @@ namespace Garage.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.VehicleTypeId = new SelectList(db.VehicleTypes, "Id", "Type", vehicle.VehicleTypeId);
             return View(vehicle);
         }
 
@@ -83,7 +79,7 @@ namespace Garage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Registration,VehicleTypeId,VehicleBrand,Color,ParkingTime,CheckoutTime,TotalPrice,PricePerHour,IsParked")] Vehicle vehicle)
+        public ActionResult Edit([Bind(Include = "Id,Registration,VehicleTypeId,Color")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +87,6 @@ namespace Garage.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.VehicleTypeId = new SelectList(db.VehicleTypes, "Id", "Type", vehicle.VehicleTypeId);
             return View(vehicle);
         }
 

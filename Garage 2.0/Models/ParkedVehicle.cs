@@ -18,8 +18,6 @@ namespace Garage.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime ParkingTime { get; set; }
 
-        public virtual Vehicle Vehicle { get; set; }
-        public virtual Member Member { get; set; }
 
         [DisplayName("Parked To")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]

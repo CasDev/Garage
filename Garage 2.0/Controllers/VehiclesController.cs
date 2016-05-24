@@ -33,7 +33,7 @@ namespace Garage.Controllers
 
             var vehicles = new List<Vehicle>();
             foreach (var parked in db.ParkedVehicles.Where(p => p.IsParked == true)) {
-                vehicles.Add(parked.Vehicle);
+                //vehicles.Add(parked.Vehicle);
             }
 
             if (searchString != null)
@@ -203,7 +203,7 @@ namespace Garage.Controllers
                 }
                 _vehicle.Registration = vehicle.Registration.ToUpper();
                 //_vehicle.VehicleBrand = vehicle.VehicleBrand;
-                _vehicle.VehicleType = vehicle.VehicleType;
+                //_vehicle.VehicleType = vehicle.VehicleType;
                 _vehicle.Color = vehicle.Color.ToUpper();
 
                 db.Entry(_vehicle).State = EntityState.Modified;

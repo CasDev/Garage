@@ -65,9 +65,6 @@
             @Html.ActionLink("Vehicle Type", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.VehicleTypeParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Vehicle Brand", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.VehicleBrandParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th>
             @Html.ActionLink("Color", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.ColorParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
@@ -86,22 +83,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Registration)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleBrand)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Color)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParkingTime)
-            </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.PricePerHour)
-            </td>
 
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
