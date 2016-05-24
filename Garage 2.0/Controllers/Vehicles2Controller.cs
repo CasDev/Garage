@@ -40,6 +40,17 @@ namespace Garage.Controllers
         // GET: Vehicles2/Create
         public ActionResult Create()
         {
+            ViewBag.VehicleTypes = db.VehicleTypes.OrderBy(t => t.Type);
+            if (((IEnumerable<VehicleType>)ViewBag.VehicleTypes).Count() <= 0)
+            {
+                // TODO: warning
+            }
+            ViewBag.Members = db.Members.OrderBy(m => m.LastName);
+            if (((IEnumerable<Member>) ViewBag.Members).Count() <= 0)
+            {
+                // TODO: warning
+            }
+
             return View();
         }
 
@@ -48,10 +59,14 @@ namespace Garage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Registration,VehicleTypeId,Color")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "Id,Registration,VehicleTypeId,MemberTypeId,Color")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
+                Member Member = db.Members.Find(vehicle.MemberTypeId);
+                vehicle.Member = (vehicle.Member != null ? vehicle.Member : new List<Member>());
+                vehicle.Member.Add(Member);
+
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
                 return RedirectToAction("Index");

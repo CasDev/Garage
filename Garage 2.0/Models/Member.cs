@@ -14,6 +14,5 @@ namespace Garage.Models
         public string ZipCode { get; set; }
         public string City { get; set; }
         public virtual ICollection<Vehicle> Vehicle { get; set; }
-
     }
 }

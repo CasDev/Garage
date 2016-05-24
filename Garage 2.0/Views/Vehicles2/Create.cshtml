@@ -24,9 +24,27 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Member, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="MemberTypeId">
+                    @foreach (Member member in ViewBag.Members)
+                    {
+                        <option value="@member.Id">@member.FirstName @member.LastName</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Member, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.VehicleTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.VehicleTypeId, new { htmlAttributes = new { @class = "form-control" } })
+                <select name="VehicleTypeId">
+                    @foreach (VehicleType type in ViewBag.VehicleTypes)
+                    {
+                        <option value="@type.Id">@type.Type</option>
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.VehicleTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
