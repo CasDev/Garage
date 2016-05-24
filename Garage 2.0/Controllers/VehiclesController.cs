@@ -85,10 +85,7 @@ namespace Garage.Controllers
                     break;
             }
 
-            string DefaultPageSize = ConfigurationManager.AppSettings["PageSize"];
-
-            int pageSize = 1;
-            Int32.TryParse(DefaultPageSize, out pageSize);
+            int pageSize = 3;
             int pageNumber = (page ?? 1);
             return View(vehicles.ToPagedList(pageNumber, pageSize));
             
@@ -129,14 +126,9 @@ namespace Garage.Controllers
         {
             if (ModelState.IsValid)
             {
-                string regNumber = vehicle.Registration.ToUpper();
-
-                var result = db.Vehicles.Where(v => v.Registration == regNumber).ToList();
-
-                if (result.Count > 0)
-                {
-                    return RedirectToAction("Index");
-                }
+                // check if a vehicle with that registration number
+                if (db.Vehicles.Where(v => v.IsParked == true && v.Registration.ToUpper() == vehicle.Registration.ToUpper()).Any())
+                    return RedirectToAction("Index", new { Message = Url.Encode("A vehicle with that registration number is already parked") } );
                 
                 double DefaultMoney = 0;
                 string _DefaultPricePerHour = ConfigurationManager.AppSettings["DefaultPricePerHour"];
@@ -160,7 +152,10 @@ namespace Garage.Controllers
 
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                
+
+                             
+                return RedirectToAction("Details", new { Id = vehicle.Id });
             }
 
             return View(vehicle);
@@ -188,6 +183,10 @@ namespace Garage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Registration,VehicleType,VehicleBrand,Color")] Vehicle vehicle)
         {
+
+            if (db.Vehicles.Where(v => v.IsParked == true && v.Registration.ToUpper() == vehicle.Registration.ToUpper()).Any())
+                return RedirectToAction("Index", new { Message = Url.Encode("A vehicle with that registration number is already parked") });
+
             if (ModelState.IsValid)
             {
                 Vehicle _vehicle = db.Vehicles.Find(vehicle.Id);
