@@ -22,6 +22,7 @@ namespace Garage.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "You need to specify a registration number")]
+        [MaxLength(101, ErrorMessage = "Cannot be longer than 100 characters")]
         public string Registration { get; set; }
 
         [DisplayName("Vehicle Type")]
@@ -31,6 +32,7 @@ namespace Garage.Models
         public VehicleBrand VehicleBrand { get; set; }
 
         [Required(ErrorMessage = "You need to specify a color")]
+        [MaxLength(101, ErrorMessage = "Cannot be longer then 100 characters")]
         public string Color { get; set; }
 
         [DisplayName("Parked Since")]
