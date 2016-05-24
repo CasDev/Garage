@@ -18,7 +18,6 @@ namespace Garage.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime ParkingTime { get; set; }
 
-
         [DisplayName("Parked To")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime CheckoutTime { get; set; }

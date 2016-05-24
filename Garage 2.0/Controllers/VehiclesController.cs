@@ -33,7 +33,7 @@ namespace Garage.Controllers
 
             var vehicles = new List<Vehicle>();
             foreach (var parked in db.ParkedVehicles.Where(p => p.IsParked == true)) {
-                //vehicles.Add(parked.Vehicle);
+               // vehicles.Add(db.Vehicles.Find(parked.VehicleId));
             }
 
             if (searchString != null)
@@ -49,9 +49,8 @@ namespace Garage.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 //vehicles = vehicles.Where(v => v.Registration.Contains(searchString) ||
-                //                          v.Color.Contains(searchString) ||
-                //                          searchString.Contains(v.VehicleType.ToString()) ||
-                //                          searchString.Contains(v.VehicleBrand.ToString()));
+                //                          v.Color.Contains(searchString)).ToList();
+                // TODO: must check for type
             }
 
             //switch (sortOrder)
@@ -60,31 +59,31 @@ namespace Garage.Controllers
             //        vehicles = vehicles.OrderByDescending(v => v.Registration);
             //        break;
             //    case "vehicletype_desc":
-            //        vehicles = vehicles.OrderByDescending(v => v.VehicleType);
+            //        vehicles = vehicles.orderbydescending(v => v.vehicletype);
             //        break;
-            //    case "VehicleType":
-            //        vehicles = vehicles.OrderBy(v => v.VehicleType);
+            //    case "vehicletype":
+            //        vehicles = vehicles.orderby(v => v.vehicletype);
             //        break;
             //    case "vehiclebrand_desc":
-            //        vehicles = vehicles.OrderByDescending(v => v.VehicleBrand);
+            //        vehicles = vehicles.orderbydescending(v => v.vehiclebrand);
             //        break;
-            //    case "VehicleBrand":
-            //        vehicles = vehicles.OrderBy(v => v.VehicleBrand);
+            //    case "vehiclebrand":
+            //        vehicles = vehicles.orderby(v => v.vehiclebrand);
             //        break;
             //    case "parkingtime_desc":
-            //        vehicles = vehicles.OrderByDescending(v => v.ParkingTime);
+            //        vehicles = vehicles.orderbydescending(v => v.parkingtime);
             //        break;
-            //    case "ParkingTime":
-            //        vehicles = vehicles.OrderBy(v => v.ParkingTime);
+            //    case "parkingtime":
+            //        vehicles = vehicles.orderby(v => v.parkingtime);
             //        break;
             //    case "color_desc":
-            //        vehicles = vehicles.OrderByDescending(v => v.Color);
+            //        vehicles = vehicles.orderbydescending(v => v.color);
             //        break;
-            //    case "Color":
-            //        vehicles = vehicles.OrderBy(v => v.Color);
+            //    case "color":
+            //        vehicles = vehicles.orderby(v => v.color);
             //        break;
             //    default:
-            //        vehicles = vehicles.OrderBy(v => v.Registration);
+            //        vehicles = vehicles.orderby(v => v.registration);
             //        break;
             //}
 
