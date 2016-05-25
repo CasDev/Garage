@@ -189,10 +189,15 @@ namespace Garage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Vehicle vehicle = db.Vehicles.Find(id);
-            db.Vehicles.Remove(vehicle);
+            ParkedVehicle parked = db.ParkedVehicles.Where(p => p.VehicleId == id && p.IsParked == true).FirstOrDefault();
+            if (parked == null)
+            {
+                // TODO: warning
+            }
+            parked.CheckoutTime = DateTime.Now;
+            db.Entry(parked).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Receipt", new { id = parked.Id });
         }
 
         protected override void Dispose(bool disposing)
