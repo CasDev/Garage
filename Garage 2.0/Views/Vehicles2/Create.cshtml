@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Member, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select name="MemberTypeId">
+                <select name="MemberTypeId" class="form-control">
                     @foreach (Member member in ViewBag.Members)
                     {
                         <option value="@member.Id">@member.FirstName @member.LastName</option>
@@ -39,7 +39,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.VehicleType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select name="VehicleTypeId">
+                <select name="VehicleTypeId" class="form-control">
                     @foreach (VehicleType type in ViewBag.VehicleTypes)
                     {
                         <option value="@type.Id">@type.Type</option>
