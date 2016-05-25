@@ -97,8 +97,8 @@ namespace Garage.Controllers
             {
                 Member Member = db.Members.Find(vehicle.MemberTypeId);
                 vehicle.Member = Member;
-                vehicle.Registration.ToUpper();
-                vehicle.Color.ToUpper();
+                vehicle.Registration = vehicle.Registration.ToUpper();
+                vehicle.Color = vehicle.Color.ToUpper();
                 db.Vehicles.Add(vehicle);
                 Member.Vehicle.Add(vehicle);
 //                db.Members.Add(Member);
@@ -160,8 +160,8 @@ namespace Garage.Controllers
         {
             if (ModelState.IsValid)
             {
-                vehicle.Color.ToUpper();
-                vehicle.Registration.ToUpper();
+                vehicle.Registration = vehicle.Registration.ToUpper();
+                vehicle.Color = vehicle.Color.ToUpper();
                 db.Entry(vehicle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
