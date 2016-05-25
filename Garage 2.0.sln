@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage 2.0", "Garage 2.0\Ga
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F0E40D26-94E9-45EC-A56D-5C3030F0BF8F}"
 	ProjectSection(SolutionItems) = preProject
+		Garage 2_5.pdf = Garage 2_5.pdf
+		Garage 2_5.xml = Garage 2_5.xml
 		README.md = README.md
 	EndProjectSection
 EndProject
