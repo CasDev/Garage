@@ -308,6 +308,7 @@
     <Content Include="Views\Vehicles2\Edit.cshtml" />
     <Content Include="Views\Vehicles2\Index.cshtml" />
     <Content Include="Views\ParkedVehicles\History.cshtml" />
+    <Content Include="Views\Vehicles2\Receipt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
