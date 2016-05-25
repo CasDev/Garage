@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Garage.Models.ParkedVehicle>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "History";
 }
 
-<h2>Index</h2>
+<h2>History</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,15 +20,19 @@
         <th>
             @Html.DisplayNameFor(model => model.Vehicle.VehicleType)
         </th>
-
         <th>
             @Html.DisplayNameFor(model => model.ParkingTime)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.CheckoutTime)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.PricePerHour)
         </th>
 
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
         <th></th>
     </tr>
 
@@ -37,23 +41,27 @@
         <td>
             @Html.DisplayFor(modelItem => item.Member.FirstName) @Html.DisplayFor(modelItem => item.Member.LastName)
         </td>
-        
+
         <td>
             @Html.DisplayFor(modelItem => item.Vehicle.Registration)
         </td>
-        
+
         <td>
             @Html.DisplayFor(modelItem => item.Vehicle.VehicleType.Type)
         </td>
-        
         <td>
             @Html.DisplayFor(modelItem => item.ParkingTime)
         </td>
-
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckoutTime)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.PricePerHour)
         </td>
 
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

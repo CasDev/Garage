@@ -32,5 +32,8 @@ namespace Garage.Models
         [DisplayFormat(DataFormatString = "{0:#####.##}")]
         [DisplayName("Total Price")]
         public double TotalPrice { get; set; }
+
+        public virtual Member Member { get; set; }
+        public virtual Vehicle Vehicle { get; set; }
     }
 }

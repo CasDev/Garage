@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201605250713068_Added_VehicleType.Designer.cs">
       <DependentUpon>201605250713068_Added_VehicleType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605250938152_Added_Nav_Props_For_ParkedVehicle.cs" />
+    <Compile Include="Migrations\201605250938152_Added_Nav_Props_For_ParkedVehicle.Designer.cs">
+      <DependentUpon>201605250938152_Added_Nav_Props_For_ParkedVehicle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\ParkedVehicle.cs" />
@@ -303,6 +307,7 @@
     <Content Include="Views\Vehicles2\Details.cshtml" />
     <Content Include="Views\Vehicles2\Edit.cshtml" />
     <Content Include="Views\Vehicles2\Index.cshtml" />
+    <Content Include="Views\ParkedVehicles\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -354,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605250713068_Added_VehicleType.resx">
       <DependentUpon>201605250713068_Added_VehicleType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605250938152_Added_Nav_Props_For_ParkedVehicle.resx">
+      <DependentUpon>201605250938152_Added_Nav_Props_For_ParkedVehicle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
