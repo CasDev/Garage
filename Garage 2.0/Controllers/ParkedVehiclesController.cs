@@ -46,7 +46,9 @@ namespace Garage.Controllers
         // GET: ParkedVehicles/Create
         public ActionResult Create()
         {
-            return View();
+            return RedirectToAction("Create", "Vehicles2");
+
+            // return View();
         }
 
         // POST: ParkedVehicles/Create
@@ -56,14 +58,14 @@ namespace Garage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,MemberId,VehicleId,ParkingTime,CheckoutTime,PricePerHour,IsParked,TotalPrice")] ParkedVehicle parkedVehicle)
         {
-            if (ModelState.IsValid)
-            {
-                db.ParkedVehicles.Add(parkedVehicle);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    db.ParkedVehicles.Add(parkedVehicle);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
-            return View(parkedVehicle);
+            return RedirectToAction("Create", "Vehicles2");
         }
 
         // GET: ParkedVehicles/Edit/5

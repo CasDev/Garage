@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VehicleTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.VehicleType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select name="VehicleTypeId">
                     @foreach (VehicleType type in ViewBag.VehicleTypes)
@@ -45,7 +45,7 @@
                         <option value="@type.Id">@type.Type</option>
                     }
                 </select>
-                @Html.ValidationMessageFor(model => model.VehicleTypeId, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.VehicleType, "", new { @class = "text-danger" })
             </div>
         </div>
 
