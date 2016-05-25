@@ -54,10 +54,10 @@ namespace Garage.Migrations
 
             ParkedVehicle[] Parked = new[]
             {
-                new ParkedVehicle() { ParkingTime = DateTime.Now, CheckoutTime = new DateTime(2016, 5, 1, 22, 0, 0), TotalPrice = 61, PricePerHour = 61, IsParked = false, MemberId = Members[0].Id, VehicleId = Vehicles[0].Id },
-                new ParkedVehicle() { ParkingTime = DateTime.Now, CheckoutTime = DateTime.Now, TotalPrice = 61, PricePerHour = 61, IsParked = true, MemberId = Members[2].Id, VehicleId = Vehicles[1].Id },
-                new ParkedVehicle() { ParkingTime = DateTime.Now, CheckoutTime = DateTime.Now, TotalPrice = 0, PricePerHour = 61, IsParked = true, MemberId = Members[2].Id, VehicleId = Vehicles[2].Id },
-                new ParkedVehicle() { ParkingTime = DateTime.Now, CheckoutTime = DateTime.Now, TotalPrice = 0, PricePerHour = 61, IsParked = true, MemberId = Members[1].Id, VehicleId = Vehicles[3].Id }
+                new ParkedVehicle() { ParkingTime = new DateTime(2016, 5, 18), CheckoutTime = new DateTime(2016, 5, 1, 22, 0, 0), TotalPrice = 61, PricePerHour = 61, IsParked = false, MemberId = Members[0].Id, VehicleId = Vehicles[0].Id },
+                new ParkedVehicle() { ParkingTime = new DateTime(2016, 5, 20), CheckoutTime = DateTime.Now, TotalPrice = 0, PricePerHour = 61, IsParked = true, MemberId = Members[2].Id, VehicleId = Vehicles[1].Id },
+                new ParkedVehicle() { ParkingTime = new DateTime(2016, 5, 22), CheckoutTime = DateTime.Now, TotalPrice = 0, PricePerHour = 61, IsParked = true, MemberId = Members[2].Id, VehicleId = Vehicles[2].Id },
+                new ParkedVehicle() { ParkingTime = new DateTime(2016, 5, 23), CheckoutTime = DateTime.Now, TotalPrice = 0, PricePerHour = 61, IsParked = true, MemberId = Members[1].Id, VehicleId = Vehicles[3].Id }
             };
             context.ParkedVehicles.AddOrUpdate(
                 p => new { p.ParkingTime, p.MemberId, p.VehicleId, p.IsParked },
