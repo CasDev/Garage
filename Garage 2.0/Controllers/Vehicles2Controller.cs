@@ -30,6 +30,7 @@ namespace Garage.Controllers
             return View(vehicles);
         }
 
+
         // GET: Vehicles2/Details/5
         public ActionResult Details(int? id)
         {

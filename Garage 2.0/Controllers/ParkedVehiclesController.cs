@@ -21,6 +21,13 @@ namespace Garage.Controllers
             return View(db.ParkedVehicles.ToList());
         }
 
+        public ActionResult History(string searchString)
+        {
+            var parkedVehicles = db.ParkedVehicles.Where(p => p.IsParked == false).ToList<ParkedVehicle>();
+
+
+            return View(parkedVehicles);
+        }
         // GET: ParkedVehicles/Details/5
         public ActionResult Details(int? id)
         {
