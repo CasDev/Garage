@@ -15,6 +15,29 @@ namespace Garage.Controllers
     {
         private DataAccess.Database db = new DataAccess.Database();
 
+        /// <summary>
+        /// Produces a receipt
+        /// </summary>
+        /// <param name="id">id is ParkedVehicle.Id</param>
+        public ActionResult Receipt(int id)
+        {
+            ParkedVehicle pv = db.ParkedVehicles.Find(id);
+
+            if (pv == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            TimeSpan duration = (DateTime.Now - pv.ParkingTime);
+            double totalPrice = duration.TotalMinutes * pv.PricePerHour / 60.0;
+
+            pv.TotalPrice = totalPrice;
+            db.Entry(pv).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return View(pv);
+        }
+
         // GET: Vehicles2
         public ActionResult Index(string searchString)
         {
@@ -74,10 +97,26 @@ namespace Garage.Controllers
             {
                 Member Member = db.Members.Find(vehicle.MemberTypeId);
                 vehicle.Member = Member;
-                Member.Vehicle.Add(vehicle);
-
+                vehicle.Registration.ToUpper();
+                vehicle.Color.ToUpper();
                 db.Vehicles.Add(vehicle);
+                Member.Vehicle.Add(vehicle);
+//                db.Members.Add(Member);
+// TODO: this is throwing an exception, and I don't know why
                 db.SaveChanges();
+
+                ParkedVehicle parked = new ParkedVehicle();
+                parked.CheckoutTime = new DateTime(1970, 1, 1, 0, 0, 0);
+                parked.IsParked = true;
+                parked.MemberId = Member.Id;
+                parked.ParkingTime = DateTime.Now;
+                parked.PricePerHour = 60;
+                // TODO: set to configurated price
+                parked.TotalPrice = 0;
+                parked.VehicleId = vehicle.Id;
+                db.ParkedVehicles.Add(parked);
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -96,6 +135,19 @@ namespace Garage.Controllers
             {
                 return HttpNotFound();
             }
+
+            var list = db.VehicleTypes.OrderBy(t => t.Type);
+            if (list.Count() <= 0)
+            {
+                // TODO: warning
+            }
+            var _list = new List<SelectListItem>();
+            foreach (var t in list)
+            {
+                _list.Add(new SelectListItem() { Text = t.Type, Value = t.Id.ToString() });
+            }
+            ViewBag.VehicleTypes = _list;
+
             return View(vehicle);
         }
 
@@ -108,6 +160,8 @@ namespace Garage.Controllers
         {
             if (ModelState.IsValid)
             {
+                vehicle.Color.ToUpper();
+                vehicle.Registration.ToUpper();
                 db.Entry(vehicle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
