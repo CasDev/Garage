@@ -65,6 +65,7 @@ namespace Garage.Controllers
             {
                 Member Member = db.Members.Find(vehicle.MemberTypeId);
                 vehicle.Member = Member;
+                Member.Vehicle.Add(vehicle);
 
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
