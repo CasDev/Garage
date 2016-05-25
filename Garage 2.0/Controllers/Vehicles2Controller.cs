@@ -39,10 +39,18 @@ namespace Garage.Controllers
         }
 
         // GET: Vehicles2
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var vehicles = db.Vehicles.Include(m => m.Member);
-            return View(vehicles.ToList());
+            var vehicles = db.Vehicles.Include(m => m.Member).ToList<Vehicle>();
+            
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                vehicles = vehicles.Where(m => m.Registration.ToUpper().Contains(searchString.ToUpper())
+                                          || m.VehicleType.Type.ToUpper().Contains(searchString.ToUpper())).ToList();
+            }
+            
+            return View(vehicles);
         }
 
         // GET: Vehicles2/Details/5
