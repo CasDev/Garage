@@ -77,7 +77,7 @@ namespace Garage.Controllers
             {
                 // TODO: warning
             }
-            ViewBag.Members = db.Members.OrderBy(m => m.LastName);
+            ViewBag.Members = db.Members.Where(m => m.IsActive == true).OrderBy(m => m.LastName);
             if (((IEnumerable<Member>) ViewBag.Members).Count() <= 0)
             {
                 // TODO: warning
