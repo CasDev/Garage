@@ -230,6 +230,10 @@
     <Compile Include="Migrations\201605250938152_Added_Nav_Props_For_ParkedVehicle.Designer.cs">
       <DependentUpon>201605250938152_Added_Nav_Props_For_ParkedVehicle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605251116286_Tenth.cs" />
+    <Compile Include="Migrations\201605251116286_Tenth.Designer.cs">
+      <DependentUpon>201605251116286_Tenth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\ParkedVehicle.cs" />
@@ -363,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605250938152_Added_Nav_Props_For_ParkedVehicle.resx">
       <DependentUpon>201605250938152_Added_Nav_Props_For_ParkedVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605251116286_Tenth.resx">
+      <DependentUpon>201605251116286_Tenth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

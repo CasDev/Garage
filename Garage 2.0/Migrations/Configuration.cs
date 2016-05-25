@@ -43,9 +43,9 @@ namespace Garage.Migrations
 
             Member[] Members = new[]
             {
-                new Member() { FirstName = "John", LastName = "Castell", Address = "Storgatan 2", City = "Tyresö", ZipCode = "172 92" },
-                new Member() { FirstName = "Andreas", LastName = "Carsbring", Address = "Storgatan 4", City = "Tyresö", ZipCode = "172 92" },
-                new Member() { FirstName = "Thomas", LastName = "Ekman", Address = "Storgatan 1", City = "Tyresö", ZipCode = "172 92" }
+                new Member() { FirstName = "John", LastName = "Castell", Address = "Storgatan 2", City = "Tyresö", ZipCode = "172 92", RegistrationDate = DateTime.Now, IsActive = true },
+                new Member() { FirstName = "Andreas", LastName = "Carsbring", Address = "Storgatan 4", City = "Tyresö", ZipCode = "172 92", RegistrationDate = DateTime.Now, IsActive = true },
+                new Member() { FirstName = "Thomas", LastName = "Ekman", Address = "Storgatan 1", City = "Tyresö", ZipCode = "172 92", RegistrationDate = DateTime.Now, IsActive = true }
             };
             context.Members.AddOrUpdate(m => new { m.FirstName, m.LastName },
                 Members

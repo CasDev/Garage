@@ -18,7 +18,7 @@ namespace Garage.Controllers
         // GET: Members
         public ActionResult Index(string searchString)
         {
-            var members = db.Members.ToList<Member>();
+            var members = db.Members.Where(m => m.IsActive == true).ToList<Member>();
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -58,6 +58,8 @@ namespace Garage.Controllers
         {
             if (ModelState.IsValid)
             {
+                member.RegistrationDate = DateTime.Now;
+                member.IsActive = true;
                 db.Members.Add(member);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -118,7 +120,8 @@ namespace Garage.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Member member = db.Members.Find(id);
-            db.Members.Remove(member);
+            member.IsActive = false;
+            db.Entry(member).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

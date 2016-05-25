@@ -13,6 +13,8 @@ namespace Garage.Models
         public string Address { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime RegistrationDate { get; set; }
 
         public virtual ICollection<Vehicle> Vehicle { get; set; }
     }
