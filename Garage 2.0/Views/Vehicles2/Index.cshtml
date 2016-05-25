@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.Registration)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VehicleTypeId)
+            @Html.DisplayNameFor(model => model.VehicleType.Type)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Color)
@@ -35,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.Registration)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.VehicleTypeId)
+            @Html.DisplayFor(modelItem => item.VehicleType.Type)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Color)

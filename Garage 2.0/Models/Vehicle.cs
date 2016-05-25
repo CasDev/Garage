@@ -27,7 +27,7 @@ namespace Garage.Models
 
         public virtual Member Member { get; set; }
 
-
+        public virtual VehicleType VehicleType { get; set; }
 
     }
 }
