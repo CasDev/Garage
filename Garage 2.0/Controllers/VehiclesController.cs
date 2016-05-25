@@ -33,7 +33,7 @@ namespace Garage.Controllers
 
             var vehicles = new List<Vehicle>();
             foreach (var parked in db.ParkedVehicles.Where(p => p.IsParked == true)) {
-               // vehicles.Add(db.Vehicles.Find(parked.VehicleId));
+               vehicles.Add(db.Vehicles.Find(parked.VehicleId));
             }
 
             if (searchString != null)
@@ -48,44 +48,39 @@ namespace Garage.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                //vehicles = vehicles.Where(v => v.Registration.Contains(searchString) ||
-                //                          v.Color.Contains(searchString)).ToList();
+                vehicles = vehicles.Where(v => v.Registration.Contains(searchString) || v.Color.Contains(searchString)).ToList();
                 // TODO: must check for type
             }
 
-            //switch (sortOrder)
-            //{
-            //    case "registration_desc":
-            //        vehicles = vehicles.OrderByDescending(v => v.Registration);
-            //        break;
-            //    case "vehicletype_desc":
-            //        vehicles = vehicles.orderbydescending(v => v.vehicletype);
-            //        break;
-            //    case "vehicletype":
-            //        vehicles = vehicles.orderby(v => v.vehicletype);
-            //        break;
-            //    case "vehiclebrand_desc":
-            //        vehicles = vehicles.orderbydescending(v => v.vehiclebrand);
-            //        break;
-            //    case "vehiclebrand":
-            //        vehicles = vehicles.orderby(v => v.vehiclebrand);
-            //        break;
-            //    case "parkingtime_desc":
-            //        vehicles = vehicles.orderbydescending(v => v.parkingtime);
-            //        break;
-            //    case "parkingtime":
-            //        vehicles = vehicles.orderby(v => v.parkingtime);
-            //        break;
-            //    case "color_desc":
-            //        vehicles = vehicles.orderbydescending(v => v.color);
-            //        break;
-            //    case "color":
-            //        vehicles = vehicles.orderby(v => v.color);
-            //        break;
-            //    default:
-            //        vehicles = vehicles.orderby(v => v.registration);
-            //        break;
-            //}
+            switch (sortOrder)
+            {
+                case "registration_desc":
+                    vehicles = vehicles.OrderByDescending(v => v.Registration).ToList();
+                    break;
+                case "vehicletype_desc":
+//                    vehicles = vehicles.OrderByDescending(v => v.vehicletype).ToList();
+// TODO: fix this
+                    break;
+                case "vehicletype":
+//                    vehicles = vehicles.OrderBy(v => v.vehicletype).ToList();
+// TODO: fix this
+                    break;
+                case "parkingtime_desc":
+//                    vehicles = vehicles.OrderByDescending(v => v.parkingtime).ToList();
+                    break;
+                case "parkingtime":
+//                    vehicles = vehicles.OrderBy(v => v.parkingtime).ToList();
+                    break;
+                case "color_desc":
+                    vehicles = vehicles.OrderByDescending(v => v.Color).ToList();
+                    break;
+                case "color":
+                    vehicles = vehicles.OrderBy(v => v.Color).ToList();
+                    break;
+                default:
+                    vehicles = vehicles.OrderBy(v => v.Registration).ToList();
+                    break;
+            }
 
             string DefaultPageSize = ConfigurationManager.AppSettings["PageSize"];
             
@@ -98,8 +93,14 @@ namespace Garage.Controllers
 
         public ActionResult Historic()
         {
+            var vehicles = new List<Vehicle>();
+            foreach (var parked in db.ParkedVehicles.Where(p => p.IsParked == false))
+            {
+                vehicles.Add(db.Vehicles.Find(parked.VehicleId));
+            }
+
             //return View(db.Vehicles.Where(v => v.IsParked == false).ToList());
-            return View(db.Vehicles.ToList());
+            return View(vehicles);
         }
 
         // GET: Vehicles/Details/5
@@ -130,6 +131,7 @@ namespace Garage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Park([Bind(Include = "Registration,VehicleType,VehicleBrand,Color")] Vehicle vehicle)
         {
+            // TODO: take a look at this function
             if (ModelState.IsValid)
             {
                 // check if a vehicle with that registration number
@@ -193,6 +195,7 @@ namespace Garage.Controllers
             //if (db.Vehicles.Where(v => v.IsParked == true && v.Registration.ToUpper() == vehicle.Registration.ToUpper()).Any())
             //    return RedirectToAction("Index", new { Message = Url.Encode("A vehicle with that registration number is already parked") });
 
+            // TODO: check up on this one
             if (ModelState.IsValid)
             {
                 Vehicle _vehicle = db.Vehicles.Find(vehicle.Id);
@@ -257,36 +260,35 @@ namespace Garage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Vehicle vehicle = db.Vehicles.Find(id);
-            if (vehicle == null)
+            ParkedVehicle parked = db.ParkedVehicles.Where(p => p.VehicleId == id && p.IsParked == true).FirstOrDefault();
+            if (parked == null)
             {
-                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
+                return RedirectToAction("Index", new { Message = Url.Encode("Parked vehicle not found") });
             }
-            //vehicle.CheckoutTime = DateTime.Now;
+            parked.CheckoutTime = DateTime.Now;
+            parked.IsParked = false;
             
-            //vehicle.IsParked = false;
-            db.Entry(vehicle).State = EntityState.Modified;
+            db.Entry(parked).State = EntityState.Modified;
             db.SaveChanges();
-            //db.Vehicles.Remove(vehicle);
-            //db.SaveChanges();
-            return RedirectToAction("Receipt", new { id = vehicle.Id });
+
+            return RedirectToAction("Receipt", new { id = parked.Id });
         }
 
         public ActionResult Receipt(int id)
         {
-            Vehicle vehicle = db.Vehicles.Find(id);
-            if (vehicle == null)
+            ParkedVehicle parked = db.ParkedVehicles.Find(id);
+            if (parked == null)
             {
-                return RedirectToAction("Index", new { Message = Url.Encode("Vehicle not found") });
+                return RedirectToAction("Index", new { Message = Url.Encode("Parked vehicle not found") });
             }
-            //TimeSpan duration = (DateTime.Now - vehicle.ParkingTime);
-            //double totalPrice = duration.TotalMinutes * vehicle.PricePerHour / 60.0;
+            TimeSpan duration = (DateTime.Now - parked.ParkingTime);
+            double totalPrice = duration.TotalMinutes * parked.PricePerHour / 60.0;
 
-            //vehicle.TotalPrice = totalPrice;
-            db.Entry(vehicle).State = EntityState.Modified;
+            parked.TotalPrice = totalPrice;
+            db.Entry(parked).State = EntityState.Modified;
             db.SaveChanges();
 
-            return View(vehicle);
+            return View(parked);
         }
 
         protected override void Dispose(bool disposing)
