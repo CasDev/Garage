@@ -15,6 +15,29 @@ namespace Garage.Controllers
     {
         private DataAccess.Database db = new DataAccess.Database();
 
+        /// <summary>
+        /// Produces a receipt
+        /// </summary>
+        /// <param name="id">id is ParkedVehicle.Id</param>
+        public ActionResult Receipt(int id)
+        {
+            ParkedVehicle pv = db.ParkedVehicles.Find(id);
+
+            if (pv == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            TimeSpan duration = (DateTime.Now - pv.ParkingTime);
+            double totalPrice = duration.TotalMinutes * pv.PricePerHour / 60.0;
+
+            pv.TotalPrice = totalPrice;
+            db.Entry(pv).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return View(pv);
+        }
+
         // GET: Vehicles2
         public ActionResult Index()
         {
